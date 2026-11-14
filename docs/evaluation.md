@@ -17,23 +17,10 @@ A_output[i,j] = A_pred[i,j] + exp(-d(i,j)^2 / 11.5275)
 d(i,j) = ||end(centerline_i) - start(centerline_j)||_1
 ```
 
-The geometric diagonal is zero. Scores are not clipped or normalized. The operation follows lane formatting and does not alter geometry, confidence, boundary types, or the adjacency saved in temporal memory.
-
-## Temporal results
-
-The README reports completed sequence measurements on the same 150 validation scenes. Metrics use adjacent frames, confidence >= 0.3, and an edge threshold > 0.5 where a binary graph is required.
-
-- **Centerline jitter:** ego-motion-aligned geometry change for instances correctly matched in both frames, in metres.
-- **Adapted C-mAP:** a temporal extension of lane/crosswalk AP with an external association procedure and look-back 1.
-- **Adapted temporal TOP_lsls:** native ten-point XYZ lane-segment matching followed by the v2.1 directed vertex AP rules. Persistent GT identities and unchanged GT relations define cross-frame items; the edge score is the smaller score from the two frames. Missing endpoints receive the evaluator's `(1 - GT) * (0.5 + float32 epsilon)` penalty.
-- **Persistent-edge recall / path preservation:** recall of GT connections / multi-hop paths across the frame pair, including node misses.
-
-Adapted temporal TOP_lsls covers 4,656 adjacent frame pairs. Its scene-bootstrap 95% confidence intervals are 11.82–15.59 for LaneSegNet, 8.77–11.74 for SQD-MapNet, and 18.97–24.05 for TopoX + GeoDist (1,000 resamples, seed 42). The SQD-MapNet lane-segment comparison embeds its 2D geometry in XYZ with zero height.
-
-The standard evaluation command produces the frame-level metrics. Temporal measurements in the README are the separately scored sequence results summarized in [results.json](results.json).
+The geometric diagonal is zero; off-diagonal scores use direct additive fusion. GeoDist refines the formatted output after temporal memory is saved.
 
 ## Checkpoint
 
-The downloadable file contains `state_dict` and compact model metadata. All 932 state tensors are bitwise identical to the final training checkpoint at iteration 33,516. Optimizer state is omitted from the inference release.
+The checkpoint contains the model `state_dict` and metadata for iteration 33,516. To verify the download, run `sha256sum -c checkpoints.sha256` from the repository root.
 
 Use `--load-from` to initialize training from a checkpoint, and `--resume-from` with a full training checkpoint to restore optimizer and runner state.

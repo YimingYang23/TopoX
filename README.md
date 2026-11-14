@@ -5,17 +5,17 @@
 
 **KDD 2027**
 
-[Yiming Yang](https://openreview.net/profile?id=~Yiming_Yang5)<sup>1</sup>,
-[Yueru Luo](https://openreview.net/profile?id=~Yueru_Luo1)<sup>1</sup>,
-[Hongbin Lin](https://openreview.net/profile?id=~Hongbin_Lin3)<sup>1</sup>,
-[Bingkun He](https://openreview.net/profile?id=~Bingkun_He1)<sup>4</sup>,
-[Suzhong Fu](https://openreview.net/profile?id=~Suzhong_Fu2)<sup>1</sup>,<br>
-[Chao Yan](https://openreview.net/profile?id=~Chao_Yan10)<sup>2</sup>,
-[Yameng Wang](https://openreview.net/profile?id=~Yameng_Wang1)<sup>2</sup>,
-[Chao Zheng](https://openreview.net/profile?id=~Chao_Zheng9)<sup>2</sup>,
-[Chen Lv](https://openreview.net/profile?id=~Chen_Lv1)<sup>3</sup>,
-[Shuguang Cui](https://openreview.net/profile?id=~Shuguang_Cui1)<sup>1</sup>,
-[Zhen Li](https://openreview.net/profile?id=~Zhen_Li6)<sup>1</sup>
+Yiming Yang<sup>1</sup>,
+Yueru Luo<sup>1</sup>,
+Hongbin Lin<sup>1</sup>,
+Bingkun He<sup>4</sup>,
+Suzhong Fu<sup>1</sup>,<br>
+Chao Yan<sup>2</sup>,
+Yameng Wang<sup>2</sup>,
+Chao Zheng<sup>2</sup>,
+Chen Lv<sup>3</sup>,
+Shuguang Cui<sup>1</sup>,
+Zhen Li<sup>1</sup>
 
 <sup>1</sup> CUHKSZ &nbsp; <sup>2</sup> Tencent &nbsp; <sup>3</sup> NTU &nbsp; <sup>4</sup> JHU
 
@@ -30,15 +30,11 @@ TopoX builds lane graphs from surround-view video, jointly predicting lane geome
 - **2026-11:** TopoX has been **accepted to KDD 2027**!
 - **2026-11:** We release the core training and inference code, our checkpoint with temporal adjacency propagation, and the latest OpenLane-V2 results.
 
-## Highlights
+## Architecture
 
-- **Explicit temporal graph memory.** Top-K lane queries and their ordered adjacency submatrix are stored together. Confidence-gated predecessor and successor messages update the next frame's queries.
-- **Geometry and semantics in one representation.** Iterative positional embedding and lane denoising learn centerlines, boundaries, boundary types, and connectivity together.
-- **Strong lane-graph reconstruction.** The released model reaches **39.06 mAP** and **32.10 TOP_lsls** on OpenLane-V2 Subset A with GeoDist output refinement.
+[![TopoX architecture](assets/framework.png)](assets/framework.pdf)
 
-<div align="center">
-<img src="motivation1.gif" width="85%" alt="Temporal lane graph reconstruction">
-</div>
+TopoX combines a multi-camera PV-to-BEV encoder, a denoising query generator, a lane-segment graph decoder with iterative positional embedding, and streaming memory. [PDF](assets/framework.pdf)
 
 ## Results
 
@@ -51,19 +47,7 @@ Validation on **150 scenes / 4,806 frames**, using the LaneSegNet/OpenLane-V2 v2
 | TopoX | ResNet-50 | 39.06 | 37.40 | 40.71 | 30.15 | [Temporal graph](configs/topox_stage2.py) |
 | **TopoX + GeoDist** | **ResNet-50** | **39.06** | **37.40** | **40.71** | **32.10** | [Temporal graph + GeoDist](configs/topox_stage2_geodist.py) |
 
-Both rows use the **same released checkpoint**, including temporal adjacency propagation. GeoDist adds endpoint-distance scores to the final predicted adjacency. The temporal memory stores the learned graph. Exact scores and checkpoint identifiers are provided in [results.json](docs/results.json).
-
-### Temporal consistency
-
-The same validation sequences also measure geometric stability and persistence of graph connections.
-
-| Model | Centerline jitter ↓ (m) | Adapted C-mAP ↑ | Adapted temporal TOP_lsls ↑ | Persistent-edge recall ↑ | Path preservation ↑ |
-|---|---:|---:|---:|---:|---:|
-| LaneSegNet | 0.255 | 8.19 | 13.69 | 15.04 | 9.87 |
-| SQD-MapNet | 0.188 | 8.58 | 10.25 | 12.24 | 7.33 |
-| **TopoX + GeoDist** | **0.123** | **13.75** | **21.51** | **25.73** | **18.58** |
-
-TopoX preserves lane geometry and connectivity across frames, with more than **50% lower jitter** than LaneSegNet. Temporal metrics use confidence 0.3 and adjacent frames; edge/path recall includes missed nodes. Adapted temporal TOP_lsls follows the v2.1 lane-segment matching and missing-endpoint rules. See [evaluation protocols](docs/evaluation.md) for definitions.
+Both rows use the released TopoX checkpoint. GeoDist refines its output adjacency with endpoint-distance scores. [Exact results](docs/results.json).
 
 ## Quick start
 
@@ -74,7 +58,6 @@ mkdir -p checkpoints
 curl -L --fail --retry 3 \
   https://huggingface.co/y352184741/TopoX/resolve/main/topox_r50_openlanev2_subset_a.pth \
   -o checkpoints/topox_r50_openlanev2_subset_a.pth
-sha256sum -c checkpoints.sha256
 ```
 
 Evaluate the main result:
@@ -127,16 +110,16 @@ tests/               Directed propagation and GeoDist checks
 ## Citation
 
 ```bibtex
-@inproceedings{yang2027topox,
-  title={TopoX: Spatio-Temporal Lane Graph Generation via Iterative Positional Embedding and Denoising},
-  author={Yang, Yiming and Luo, Yueru and Lin, Hongbin and He, Bingkun and Fu, Suzhong and Yan, Chao and Wang, Yameng and Zheng, Chao and Lv, Chen and Cui, Shuguang and Li, Zhen},
-  booktitle={Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
-  year={2027}
+@article{yang2025topostreamer,
+  title={TopoStreamer: Temporal Lane Segment Topology Reasoning in Autonomous Driving},
+  author={Yang, Yiming and Luo, Yueru and He, Bingkun and Lin, Hongbin and Fu, Suzhong and Zheng, Chao and Cao, Zhipeng and Li, Erlong and Yan, Chao and Cui, Shuguang and Li, Zhen},
+  journal={arXiv preprint arXiv:2507.00709},
+  year={2025}
 }
 ```
 
 ## Acknowledgements and license
 
-TopoX builds on [LaneSegNet](https://github.com/OpenDriveLab/LaneSegNet), [SQD-MapNet](https://github.com/shuowang666/SQD-MapNet), [StreamMapNet](https://github.com/yuantianyuan01/StreamMapNet), and [BEVFormer](https://github.com/fundamentalvision/BEVFormer). We use [OpenLane-V2](https://github.com/OpenDriveLab/OpenLane-V2) for data and evaluation, and [TopoLogic](https://github.com/Franpin/TopoLogic) for GeoDist. The temporal evaluation draws on [MapTracker](https://github.com/woodfrog/maptracker).
+TopoX builds on [LaneSegNet](https://github.com/OpenDriveLab/LaneSegNet), [SQD-MapNet](https://github.com/shuowang666/SQD-MapNet), [StreamMapNet](https://github.com/yuantianyuan01/StreamMapNet), and [BEVFormer](https://github.com/fundamentalvision/BEVFormer). We use [OpenLane-V2](https://github.com/OpenDriveLab/OpenLane-V2) for data and evaluation, and [TopoLogic](https://github.com/Franpin/TopoLogic) for GeoDist.
 
 Code is distributed under [GPL-3.0](LICENSE), with upstream notices retained in [NOTICE](NOTICE) and [licenses/](licenses/).
