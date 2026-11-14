@@ -34,7 +34,7 @@ TopoX builds lane graphs from surround-view video, jointly predicting lane geome
 
 [![TopoX architecture](assets/framework.png)](assets/framework.pdf)
 
-TopoX combines a multi-camera PV-to-BEV encoder, a denoising query generator, a lane-segment graph decoder with iterative positional embedding, and streaming memory. [PDF](assets/framework.pdf)
+TopoX combines a multi-camera PV-to-BEV encoder, a denoising query generator, a lane-segment graph decoder with iterative positional embedding, and streaming memory.
 
 ## Results
 
