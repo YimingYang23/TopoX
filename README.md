@@ -19,7 +19,20 @@ Zhen Li<sup>1</sup>
 
 <sup>1</sup> CUHKSZ &nbsp; <sup>2</sup> Tencent &nbsp; <sup>3</sup> NTU &nbsp; <sup>4</sup> JHU
 
-[Preprint](https://arxiv.org/abs/2507.00709) · [Model weights](https://huggingface.co/y352184741/TopoX) · [Installation](docs/installation.md) · [Data preparation](docs/data.md)
+<p>
+  <a href="https://www.cuhk.edu.cn/"><img src="assets/logos/cuhk_shenzhen.png" width="28%" alt="The Chinese University of Hong Kong, Shenzhen"></a>&ensp;
+  <a href="https://map.qq.com/"><img src="assets/logos/tencent_maps.png" width="18%" alt="Tencent Maps"></a>&ensp;
+  <a href="https://www.ntu.edu.sg/"><img src="assets/logos/ntu.png" width="20%" alt="Nanyang Technological University"></a>&ensp;
+  <a href="https://www.jhu.edu/"><img src="assets/logos/jhu.png" width="24%" alt="Johns Hopkins University"></a>
+</p>
+
+<p>
+  <a href="https://arxiv.org/abs/2507.00709"><img src="assets/badges/arxiv.svg" height="26" alt="arXiv paper"></a>&ensp;
+  <a href="https://huggingface.co/y352184741/TopoX"><img src="assets/badges/huggingface.svg" height="26" alt="Hugging Face weights"></a>&ensp;
+  <a href="https://github.com/YimingYang23/TopoX"><img src="assets/badges/github.svg" height="26" alt="GitHub code"></a>
+</p>
+
+[Installation](docs/installation.md) · [Data preparation](docs/data.md)
 
 </div>
 
