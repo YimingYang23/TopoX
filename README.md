@@ -103,7 +103,6 @@ tests/               Directed propagation and GeoDist checks
 
 <div align="center">
 <img src="vis1.gif" width="80%" alt="TopoX lane graph sequence">
-<img src="vis2.gif" width="80%" alt="Lane geometry and topology across frames">
 <img src="vis5.gif" width="80%" alt="Surround-view lane graph reconstruction">
 </div>
 
