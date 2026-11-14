@@ -1,0 +1,66 @@
+{
+  "dataset": "OpenLane-V2 Subset A",
+  "split": "val",
+  "frames": 4806,
+  "scenes": 150,
+  "metric_units": "frame metrics in [0,1]; README displays percent",
+  "checkpoint": {
+    "source_sha256": "631dd1da93459cac86e696df1f963fcf9132fbf538893ad29367b8c7fe598b3f",
+    "release_sha256": "eacae0493479c0e28f3d47b8e920307827bdc3e594bfd2b69191390fed2c402a",
+    "state_tensors": 932,
+    "all_state_tensors_bitwise_equal": true,
+    "release_bytes": 246561747
+  },
+  "variants": {
+    "TopoX": {
+      "mAP": 0.3905777931213379,
+      "AP_ls": 0.37404289841651917,
+      "AP_ped": 0.4071126878261566,
+      "TOP_lsls": 0.30147306711278066,
+      "mAP_type": 0.5193686229414839
+    },
+    "TopoX + GeoDist": {
+      "mAP": 0.3905777931213379,
+      "AP_ls": 0.37404289841651917,
+      "AP_ped": 0.4071126878261566,
+      "TOP_lsls": 0.3210226011615314,
+      "mAP_type": 0.5193686229414839
+    }
+  },
+  "temporal": {
+    "units": "jitter in metres; other displayed values in percent",
+    "adjacent_frame_pairs": 4656,
+    "confidence_threshold": 0.3,
+    "edge_threshold": 0.5,
+    "rows": {
+      "LaneSegNet": [
+        0.255,
+        8.19,
+        13.69,
+        15.04,
+        9.87
+      ],
+      "SQD-MapNet": [
+        0.188,
+        8.58,
+        10.25,
+        12.24,
+        7.33
+      ],
+      "TopoX + GeoDist": [
+        0.123,
+        13.75,
+        21.51,
+        25.73,
+        18.58
+      ]
+    },
+    "columns": [
+      "centerline_jitter",
+      "adapted_C_mAP",
+      "adapted_temporal_TOP_lsls",
+      "persistent_edge_recall",
+      "path_preservation"
+    ]
+  }
+}

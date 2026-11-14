@@ -1,0 +1,14 @@
+TopoX — Spatio-Temporal Lane Graph Generation via Iterative Positional Embedding and Denoising
+Copyright (c) 2026 TopoX authors.
+
+This distribution combines original TopoX code with adapted components from:
+
+- LaneSegNet, Copyright OpenDriveLab, Apache License 2.0.
+- BEVFormer and OpenMMLab components, Apache License 2.0.
+- StreamMapNet and SQD-MapNet, GNU General Public License v3.0.
+
+The combined distribution is provided under GPL-3.0. Original attribution
+headers and upstream license texts are retained. Renaming packages/classes,
+adding temporal adjacency propagation, and integrating output GeoDist are
+modifications made for TopoX. OpenLane-V2 is installed separately and retains
+its own license and dataset terms.

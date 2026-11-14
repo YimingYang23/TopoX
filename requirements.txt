@@ -1,0 +1,11 @@
+numpy==1.23.5
+scipy==1.10.1
+Shapely==1.8.5.post1
+opencv-python==4.8.1.78
+matplotlib==3.7.5
+pyquaternion==0.9.9
+tqdm
+einops
+tensorboard
+av2==0.2.1
+numba==0.58.1
