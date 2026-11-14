@@ -5,8 +5,19 @@
 
 **KDD 2027**
 
-Yiming Yang, Yueru Luo, Bingkun He, Hongbin Lin, Suzhong Fu, Chao Zheng,<br>
-Zhipeng Cao, Erlong Li, Chao Yan, Shuguang Cui, Zhen Li
+[Yiming Yang](https://openreview.net/profile?id=~Yiming_Yang5)<sup>1</sup>,
+[Yueru Luo](https://openreview.net/profile?id=~Yueru_Luo1)<sup>1</sup>,
+[Hongbin Lin](https://openreview.net/profile?id=~Hongbin_Lin3)<sup>1</sup>,
+[Bingkun He](https://openreview.net/profile?id=~Bingkun_He1)<sup>4</sup>,
+[Suzhong Fu](https://openreview.net/profile?id=~Suzhong_Fu2)<sup>1</sup>,<br>
+[Chao Yan](https://openreview.net/profile?id=~Chao_Yan10)<sup>2</sup>,
+[Yameng Wang](https://openreview.net/profile?id=~Yameng_Wang1)<sup>2</sup>,
+[Chao Zheng](https://openreview.net/profile?id=~Chao_Zheng9)<sup>2</sup>,
+[Chen Lv](https://openreview.net/profile?id=~Chen_Lv1)<sup>3</sup>,
+[Shuguang Cui](https://openreview.net/profile?id=~Shuguang_Cui1)<sup>1</sup>,
+[Zhen Li](https://openreview.net/profile?id=~Zhen_Li6)<sup>1</sup>
+
+<sup>1</sup> CUHKSZ &nbsp; <sup>2</sup> Tencent &nbsp; <sup>3</sup> NTU &nbsp; <sup>4</sup> JHU
 
 [Preprint](https://arxiv.org/abs/2507.00709) · [Model weights](https://huggingface.co/y352184741/TopoX) · [Installation](docs/installation.md) · [Data preparation](docs/data.md)
 
@@ -118,7 +129,7 @@ tests/               Directed propagation and GeoDist checks
 ```bibtex
 @inproceedings{yang2027topox,
   title={TopoX: Spatio-Temporal Lane Graph Generation via Iterative Positional Embedding and Denoising},
-  author={Yang, Yiming and Luo, Yueru and He, Bingkun and Lin, Hongbin and Fu, Suzhong and Zheng, Chao and Cao, Zhipeng and Li, Erlong and Yan, Chao and Cui, Shuguang and Li, Zhen},
+  author={Yang, Yiming and Luo, Yueru and Lin, Hongbin and He, Bingkun and Fu, Suzhong and Yan, Chao and Wang, Yameng and Zheng, Chao and Lv, Chen and Cui, Shuguang and Li, Zhen},
   booktitle={Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
   year={2027}
 }
